@@ -16,4 +16,19 @@ This project builds on these foundations by focusing on a rescue simulation scen
 
 This initiative provides a comprehensive learning experience in autonomous systems, machine vision, and cloud-based analytics, showcasing how robotics can be harnessed for innovative solutions in simulated rescue operations.
 
+----
+### Upload image 
+
+1) load env variable by running shell script
+
+    ```bash
+    $ source ./env_varis.sh
+    ```
+
+2) execute CLI command
+
+    ```bash
+    └─ $ ▶ python upload_aws.py ./data/<filename> 
+    File was uploaded successfully.
+    ```
 
