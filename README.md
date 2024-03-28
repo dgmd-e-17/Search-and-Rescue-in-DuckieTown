@@ -19,16 +19,23 @@ This initiative provides a comprehensive learning experience in autonomous syste
 ----
 ### Upload image 
 
+script files:
+    ```
+    src/env_vars.sh
+    src/upload_aws.py
+    ```
+usage:
+
 1) load env variable by running shell script
 
     ```bash
-    $ source ./env_varis.sh
+    $ source ./env_vars.sh
     ```
 
 2) execute CLI command
 
     ```bash
-    └─ $ ▶ python upload_aws.py ./data/<filename> 
+    └─ $ ▶ python upload_aws.py ./data/test_file_1.txt 
     File was uploaded successfully.
     ```
 
