@@ -17,6 +17,12 @@ This project builds on these foundations by focusing on a rescue simulation scen
 This initiative provides a comprehensive learning experience in autonomous systems, machine vision, and cloud-based analytics, showcasing how robotics can be harnessed for innovative solutions in simulated rescue operations.
 
 ----
+### Clone Repository:
+```bash
+ git clone https://github.com/dgmd-e-17/sar_final_project.git
+```
+
+
 ### Upload image 
 
 script files:
@@ -26,13 +32,19 @@ script files:
     ```
 usage:
 
-1) load env variable by running shell script
+1) move to source directory
+
+    ```bash
+    cd src
+    ```
+
+2) load env variable by running shell script
 
     ```bash
     $ source ./env_vars.sh
     ```
 
-2) execute CLI command
+3) execute CLI command
 
     ```bash
     └─ $ ▶ python upload_aws.py ./data/test_file_1.txt 
