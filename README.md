@@ -19,16 +19,13 @@ Welcome to our project to design and construct an autonomous Duckiebot capable o
 
 1. [Project Summary](#summary)
 2. [Technologies and Methods](#technologies-and-methods)
-    - 2.1 [Scaling using Kubernetes clusters](#scaling)
-    - 2.2 [Deployment Plan](#deployment)
-    - 2.3 [CI/CD using Github Actions](#ci/cd)
-    - 2.4 [Miscellaneous improvements](#miscellaneous)
 3. [Solution Architecture](#solution-architecture)
 4. [Project Components](#project-components)
-    - 4.1 [Project Proposal](#proposal)
-    - 4.2 [Ethics Concerns](#ethics)
-    - 4.3 [Initial Demo](#initial-demo)
-    - 4.4 [Software Components](#software)
+    - 4.1 [Clone Repository](#clone-repo)
+    - 4.2 [Project Proposal](#proposal)
+    - 4.3 [Ethics Concerns](#ethics)
+    - 4.4 [Initial Demo](#initial-demo)
+    - 4.5 [Software Components](#software-components)
 5. [References](#references)
 
 
@@ -108,8 +105,10 @@ This initiative provides a comprehensive learning experience in autonomous syste
  git clone https://github.com/dgmd-e-17/sar_final_project.git
 ```
 
-<a id="propopsal"></a>
+<a id="proposal"></a>
 ### Proposal presentation
+
+
 
 <a id="ethics"></a>
 ### Ethical concerns
@@ -123,14 +122,27 @@ This initiative provides a comprehensive learning experience in autonomous syste
 
 #### Building Instructions
 
+- [🚧] **TODO** add description
+- [🚧] **TODO** add link to duckiebot building manual
+
 #### RobotSoftware Platform installation
+
+- [🚧] **TODO** add description
+- [🚧] **TODO** add link to duckiebot software manual
 
 #### MLL Implementatation - LLaVA Component
 
+We decided to use a novel approach to classify the situation. Instead of training and deploying a classical Convolutional Neural Network to label the image, we decided to locally implement a SOTA LLM, that will not only classify the images, but provide a description of the situation. 
+
+Gitub Repository: https://github.com/haotian-liu/LLaVA
+
+- [🚧] **TODO** add installation instructions
+
 #### AWS Components
 
+- [🚧] **TODO** add description
 
-#### Ussage:  upload image 
+#### Usage:  upload image 
 
 script files:
     ```
@@ -158,3 +170,18 @@ usage:
     File was uploaded successfully.
     ```
 
+<a id="references"></a>
+## 5. References
+[Return to Table of Contents](#contents)
+
+* Duckietown Project Documentation and Resources. The official Duckietown documentation offers comprehensive guides on setting up Duckiebots, programming them, and understanding the Duckietown environment: https://docs.duckietown.org/
+
+* Visual Instruction Tuning. *Haotian Liu, et al*. https://arxiv.org/html/2304.08485v2
+
+* LLaVA: Large Language and Vision Assistant. Visual Instruction Tuning. NeuriIPS 2023 (Oral). Haotian Liu, et al. https://llava-vl.github.io/
+
+* OpenCV Documentation.  The OpenCV library is crucial for computer vision tasks. The official documentation provides tutorials, guides, and API references for implementing various computer vision algorithms, essential for object recognition in robotics:  https://docs.opencv.org/master/
+
+* Robot Operating System (ROS). Provides tools and libraries to help software developers create robot applications, from simple robots to complex autonomous systems. https://www.ros.org
+
+* AWS AI Services. AI cloud-based ML and DL-based services. These services enable developers to add intelligence to their applications without requiring deep expertise in AI. https://aws.amazon.com/machine-learning/ai-services/
