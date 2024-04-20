@@ -1,4 +1,4 @@
-# <img style="float: left; padding-right: 30px; width: 45px" src="/home/artexmg/HES/DGMD-E-17ux/final_project/sar_final_project/images/harvard-logo.png">  DGMD E-17 Robotics, Autonomous Vehicles, Drones and Artificial Intelligence
+# <img style="float: left; padding-right: 30px; width: 45px" src="./images/harvard-logo.png">  DGMD E-17 Robotics, Autonomous Vehicles, Drones and Artificial Intelligence
 
 ## Final Project - Search and Rescue in Duckietown
 
