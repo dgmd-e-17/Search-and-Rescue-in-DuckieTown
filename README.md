@@ -9,7 +9,7 @@
 **Team: The Killer Robots**:
 
 * Artemio Mendoza
-* Natheniel Roe 
+* Nathaniel Roe 
 * Sidharta Roy
 
 Welcome to our project to design and construct an autonomous Duckiebot capable of navigating through a simulated environment known as Duckietown. Our Duckiebot's mission is to identify and report the locations of "victims" marked by distinct visual cues, such as colored shapes or QR codes. This endeavor showcases core robotics principles, including autonomous navigation and object recognition, all within a simulated search and rescue scenario.
@@ -18,24 +18,25 @@ Welcome to our project to design and construct an autonomous Duckiebot capable o
 ## Table of Contents
 
 1. [Project Summary](#summary)
-2. [Technologies and Methods](#technologies-and-methods)
-3. [Solution Architecture](#solution-architecture)
-4. [Project Components](#project-components)
-    - 4.1 [Clone Repository](#clone-repo)
-    - 4.2 [Project Proposal](#proposal)
-    - 4.3 [Ethics Concerns](#ethics)
-    - 4.4 [Initial Demo](#initial-demo)
-    - 4.5 [Software Components](#software-components)
-5. [References](#references)
+2. [How does it work?](#how-does-work)
+3. [Technologies and Methods](#technologies-and-methods)
+4. [Solution Architecture](#solution-architecture)
+5. [Project Components](#project-components)
+    - 5.1 [Clone Repository](#clone-repo)
+    - 5.2 [Project Proposal](#proposal)
+    - 5.3 [Ethics Concerns](#ethics)
+    - 5.4 [Initial Demo](#initial-demo)
+    - 5.5 [Software Components](#software-components)
+6. [References](#references)
 
 
 <a id="summary"></a>
 ## Project Summary
 [Return to Table of Contents](#contents)
 
-This project involves the design and construction of an autonomous Duckiebot that is capable of navigating a simplified Duckietown environment. The primary objective is for the Duckiebot to locate and report the locations of "victims" identified by distinct visual cues, such as colored shapes or QR codes. Utilizing LLaVA, an OpenSource Multimodal Large Language Model (LLM), the Duckiebot will also be able to identify hazardous situations potentially involving human victims. 
+This project involves the design and construction of an autonomous Duckiebot that is capable of navigating a simplified Duckietown environment. The primary objective is for the Duckiebot to locate and report the locations of "victims" identified by distinct visual cues, such as colored shapes or QR codes. Utilizing LLaVA, an OpenSource, Multimodal Large Language Model (LLM), the Duckiebot will also be able to identify hazardous situations potentially involving human victims. 
 
-The adquired data is uploaded to AWS S3 for further analysis.
+The acquired data is uploaded to AWS S3 for further analysis.
 
 This project aims to demonstrate essential robotics principles, including autonomous navigation and object recognition, within a simulated search and rescue scenario. 
 
@@ -53,6 +54,50 @@ This project builds on these foundations by focusing on a rescue simulation scen
 
 This initiative provides a comprehensive learning experience in autonomous systems, machine vision, and cloud-based analytics, showcasing how robotics can be harnessed for innovative solutions in simulated rescue operations.
 
+<a id="how-does-work"></a>
+## How does it work?
+[Return to Table of Contents](#contents)
+
+
+* It starts with the robot being deployed in a disaster environment. Note: in our case, the environment is Duckitown, a controlled city with landmarks. So far, our environment is reduced to this track but we will have a bigger "city" in place.
+
+![alt text](images/duckie_road.png)
+
+
+* Once deployed, the robot is capable of walking following the edges of the terrain. This is how the robot "sees" the terrain.
+
+![alt text](images/edges.png)
+
+
+* Once a person is detected, the robot stops and takes a picture of the situation. That picture is stored in the controller workstation to be analyzed. Note: while the Duckiebot platform takes control of navigation, object detection is done on a different device.
+
+### Case I: people detected
+
+![alt text](images/caseI.png)
+
+### Case II: People detected
+
+![alt text](images/caseII.png)
+
+* When the controller workstation detects an image, it is input to the local LLM API for classification. The output is either a "Safe situation" or a "Potential Rescue". In the second case, the model returns a description of the hazard, to help the rescue team. 
+
+### Case I: Situation classified as Safe
+
+![alt text](images/caseI-safe.png)
+
+### Case II: Situation classified as a Potential Hazard
+
+![alt text](images/caseII-rescue.png)
+
+* If the situation is a Potential Rescue, then the robot uploads the image to AWS for log and further analysis. Also, it signals a human operator take control of the robot and take a decision. 
+
+![alt text](Snag_11e8c1e0.png)
+The image is uploaded into AWS for logging and further analysis.
+
+* If there is no danger, then the robot keeps looking for victims. 
+
+
+
 <a id="technologies-and-methods"></a>
 ## Technologies and Methods
 [Return to Table of Contents](#contents)
@@ -62,7 +107,7 @@ This initiative provides a comprehensive learning experience in autonomous syste
 * NVIDIA Jetson Nano 4GB with GPU (CUDA)
 * Video cam
 * Differential Driver, 2-wheeled robot, with encoders.
-* Customized Duckietown setup, modified to for search and rescue
+* Customized Duckietown setup, modified for search and rescue
 
 #### Software
 
@@ -89,7 +134,7 @@ This initiative provides a comprehensive learning experience in autonomous syste
 
 * We use a State of The Art (SOTA) Large Language Model, LLaVA, to identify possible hazardous situations via image capture. The image is not only classified, but also, the potentially dangerous situation is described, so the rescue team could have context.
 
-* The images clasified as dangerous are uploaded to AWS for advanced analysis and logging.
+* The images classified as dangerous are uploaded to AWS for advanced analysis and logging.
 
 <img src="./images/architecture.png"> </img>
 
@@ -127,14 +172,36 @@ This initiative provides a comprehensive learning experience in autonomous syste
 
 #### RobotSoftware Platform installation
 
-- [🚧] **TODO** add description
+- [🚧] **TODO** add description for DuckieBot Software
 - [🚧] **TODO** add link to duckiebot software manual
 
-#### MLL Implementatation - LLaVA Component
+#### MLL Implementation - LLaVA Component
 
-We decided to use a novel approach to classify the situation. Instead of training and deploying a classical Convolutional Neural Network to label the image, we decided to locally implement a SOTA LLM, that will not only classify the images, but provide a description of the situation. 
+We decided to use a novel approach to classify the situation. Instead of training and deploying a classical Convolutional Neural Network to label the image, we decided to locally implement a SOTA LLM, that will not only classify the images but provide a description of the situation. 
 
 Gitub Repository: https://github.com/haotian-liu/LLaVA
+
+**Start LLaVa Services**
+*Instructions and image taken from LLaVa GitRepository above*
+
+The LLM model is deployed locally and can be used either via web interface, or as a CLI command. In either case, we need the following infrastructure. 
+
+![alt text](images/llava-arch.png)
+
+* Start Controller
+```python
+python -m llava.serve.controller --host 0.0.0.0 --port 10000
+```
+
+* Launch Gradio WebServer
+```python
+python -m llava.serve.gradio_web_server --controller http://localhost:10000 --model-list-mode reload
+```
+
+* Launch a model Worker
+```python
+python -m llava.serve.model_worker --host 0.0.0.0 --controller http://localhost:10000 --port 40000 --worker http://localhost:40000 --model-path liuhaotian/llava-v1.5-13b
+``` 
 
 - [🚧] **TODO** add installation instructions
 
