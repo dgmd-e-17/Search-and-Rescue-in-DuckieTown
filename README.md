@@ -83,9 +83,14 @@ This initiative provides a comprehensive learning experience in autonomous syste
 
 ### Case I: Situation classified as Safe
 
+The answer below was generated automatically by the LLM model
+
+
 ![alt text](images/caseI-safe.png)
 
 ### Case II: Situation classified as a Potential Hazard
+
+The answer below was generated automatically by the LLM model
 
 ![alt text](images/caseII-rescue.png)
 
