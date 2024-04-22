@@ -157,21 +157,32 @@ This initiative provides a comprehensive learning experience in autonomous syste
 <a id="proposal"></a>
 ### Proposal presentation
 
+[This video shows our project proposal](https://drive.google.com/file/d/1viS06114cGnm_ffIdsgWONALd-dSAewz/view?usp=sharing). This is the video shown during the initial proposals presentations.
+
+Also, a detailed version with only [the slides of the proposal can be found here.](https://docs.google.com/presentation/d/1ApG4v_wA1hNNz_CjFQiBxmGrkqtl3VUr9AUES8yy6bY/edit?usp=sharing) 
+
 
 <a id="ethics"></a>
 ### Ethical concerns
 
+In pursuing this project, we've identified key ethical concerns, including privacy invasion, data security, and asymmetric access to this technology. Our objective is not only to address these issues but also to implement solutions that safeguard ethical standards in robotic applications.
+
+In [this video, we discuss the ethical risks, and our proposals to mitigate them.](https://drive.google.com/file/d/1NpLR-ls4MPzgKr46cRcsTqLPc-I7vtRc/view?usp=sharing) 
+
 <a id="initial-demo"></a>
 ### Initial Demo
+
+
+[In this video, we show our initial demo for this project.](https://drive.google.com/file/d/1mANGDkZWNS8z_Lt5EwcjJfY_FaxLYwTc/view?usp=sharing) This is the status of the project as of 04/19/2024, and there is still a work in progress, with several components to be added and refined.
 
 <a id="software-components"></a>
 ### Software Components
 [Return to Table of Contents](#contents)
 
 #### Building Instructions
-
 - [🚧] **TODO** add description
-- [🚧] **TODO** add link to duckiebot building manual
+The Building instructions can be seen here:
+[text](gym-duckietown/README.md)
 
 #### RobotSoftware Platform installation
 
