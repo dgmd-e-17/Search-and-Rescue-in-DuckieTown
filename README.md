@@ -59,47 +59,46 @@ This initiative provides a comprehensive learning experience in autonomous syste
 [Return to Table of Contents](#contents)
 
 
-* It starts with the robot being deployed in a disaster environment. Note: in our case, the environment is Duckitown, a controlled city with landmarks. So far, our environment is reduced to this track but we will have a bigger "city" in place.
+1) It starts with the robot being deployed in a disaster environment. Note: in our case, the environment is Duckitown, a controlled city with landmarks. So far, our environment is reduced to this track but we will have a bigger "city" in place.
+<img style="float: left; padding-right: 300px; width: 450px" src="./images/duckie_road.png"></img>
 
-![alt text](images/duckie_road.png)
+</p>
 
-
-* Once deployed, the robot is capable of walking following the edges of the terrain. This is how the robot "sees" the terrain.
-
-![alt text](images/edges.png)
-
-
-* Once a person is detected, the robot stops and takes a picture of the situation. That picture is stored in the controller workstation to be analyzed. Note: while the Duckiebot platform takes control of navigation, object detection is done on a different device.
-
-### Case I: people detected
-
-![alt text](images/caseI.png)
-
-### Case II: People detected
-
-![alt text](images/caseII.png)
-
-* When the controller workstation detects an image, it is input to the local LLM API for classification. The output is either a "Safe situation" or a "Potential Rescue". In the second case, the model returns a description of the hazard, to help the rescue team. 
-
-### Case I: Situation classified as Safe
-
-The answer below was generated automatically by the LLM model
+2) Once deployed, the robot is capable of walking following the edges of the terrain. This is how the robot "sees" the terrain.
+<img style="float: left; padding-right: 300px; width: 450px" src="./images/edges.png"></img>
 
 
-![alt text](images/caseI-safe.png)
+3) Once a person is detected, the robot stops and takes a picture of the situation. That picture is stored in the controller workstation to be analyzed. Note: while the Duckiebot platform takes control of navigation, object detection is done on a different device.
 
-### Case II: Situation classified as a Potential Hazard
+    - 3.1 People detected (Case I)
 
-The answer below was generated automatically by the LLM model
+        <img style="float: left; padding-right: 300px; width: 450px" src="./images/caseI.png"></img>
 
-![alt text](images/caseII-rescue.png)
+    - 3.2 People detected (Case II)
 
-* If the situation is a Potential Rescue, then the robot uploads the image to AWS for log and further analysis. Also, it signals a human operator take control of the robot and take a decision. 
+        <img style="float: left; padding-right: 300px; width: 450px" src="./images/caseII.png"></img>
+.
 
-![alt text](Snag_11e8c1e0.png)
-The image is uploaded into AWS for logging and further analysis.
 
-* If there is no danger, then the robot keeps looking for victims. 
+4) When the controller workstation detects an image, it is input to the local LLM API for classification. The output is either a "Safe situation" or a "Potential Rescue". In the second case, the model returns a description of the hazard, to help the rescue team. 
+
+    - 4.1 Case I: Situation classified as Safe by the LLM (the text below was generated automatically by the LLM model)
+
+
+        <img style="float: left; padding-right: 300px; width: 450px" src="./images/caseI-safe.png"></img>
+
+
+    - 4.2 Case II: Situation classified as a Potential Hazard (the text below was generated automatically by the LLM model)
+
+        <img style="float: left; padding-right: 300px; width: 450px" src="./images/caseII-rescue.png"></img>
+
+.
+5) If the situation is a Potential Rescue, then the robot uploads the image to AWS for log and further analysis. Also, it signals a human operator take control of the robot and make a decision. 
+
+    <img style="float: left; padding-right: 300px; width: 450px" src="./Snag_11e8c1e0.png"></img>
+.
+
+6) If there is no danger, then the robot keeps looking for victims. 
 
 
 
@@ -159,7 +158,6 @@ The image is uploaded into AWS for logging and further analysis.
 ### Proposal presentation
 
 
-
 <a id="ethics"></a>
 ### Ethical concerns
 
@@ -186,8 +184,8 @@ We decided to use a novel approach to classify the situation. Instead of trainin
 
 Gitub Repository: https://github.com/haotian-liu/LLaVA
 
-**Start LLaVa Services**
-*Instructions and image taken from LLaVa GitRepository above*
+**Start LLaVa Services**<br/>
+Note: *Instructions and image taken from Github Repository above*
 
 The LLM model is deployed locally and can be used either via web interface, or as a CLI command. In either case, we need the following infrastructure. 
 
