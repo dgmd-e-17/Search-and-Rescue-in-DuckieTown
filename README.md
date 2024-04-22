@@ -26,8 +26,8 @@ Welcome to our project to design and construct an autonomous Duckiebot capable o
     - 5.2 [Project Proposal](#proposal)
     - 5.3 [Ethics Concerns](#ethics)
     - 5.4 [Initial Demo](#initial-demo)
-    - 5.5 [Software Components](#software-components)
-6. [References](#references)
+6. [Software Components](#software-components)
+7. [References](#references)
 
 
 <a id="summary"></a>
@@ -176,24 +176,18 @@ In [this video, we discuss the ethical risks, and our proposals to mitigate them
 [In this video, we show our initial demo for this project.](https://drive.google.com/file/d/1mANGDkZWNS8z_Lt5EwcjJfY_FaxLYwTc/view?usp=sharing) This is the status of the project as of 04/19/2024, and there is still a work in progress, with several components to be added and refined.
 
 <a id="software-components"></a>
-### Software Components
+## Software Components
 [Return to Table of Contents](#contents)
 
-#### Building Instructions
-- [🚧] **TODO** add description
-The Building instructions can be seen here:
-[text](gym-duckietown/README.md)
+### Building Instructions and Manual
+- We built a DuckieBot for this project. As well, we used a duckitown city for navigation. [The building instructions and the use manual are in this repository:](gym-duckietown/README.md). Note: this is a fork for the Duckietown GitHub repository.
 
-#### RobotSoftware Platform installation
 
-- [🚧] **TODO** add description for DuckieBot Software
-- [🚧] **TODO** add link to duckiebot software manual
+### MLL Implementation - LLaVA Component
 
-#### MLL Implementation - LLaVA Component
+* We decided to use a novel approach to classify the situation. Instead of training and deploying a classical Convolutional Neural Network to label the image, we decided to locally implement a SOTA LLM, that will not only classify the images but provide a description of the situation. 
 
-We decided to use a novel approach to classify the situation. Instead of training and deploying a classical Convolutional Neural Network to label the image, we decided to locally implement a SOTA LLM, that will not only classify the images but provide a description of the situation. 
-
-Gitub Repository: https://github.com/haotian-liu/LLaVA
+    Gitub Repository: https://github.com/haotian-liu/LLaVA
 
 **Start LLaVa Services**<br/>
 Note: *Instructions and image taken from Github Repository above*
@@ -217,11 +211,9 @@ python -m llava.serve.gradio_web_server --controller http://localhost:10000 --mo
 python -m llava.serve.model_worker --host 0.0.0.0 --controller http://localhost:10000 --port 40000 --worker http://localhost:40000 --model-path liuhaotian/llava-v1.5-13b
 ``` 
 
-- [🚧] **TODO** add installation instructions
+### AWS Components
 
-#### AWS Components
-
-- [🚧] **TODO** add description
+- The source code for uploading files to AWS is located in [./AWS/src/uploads_aws.py](aws_component/src/upload_aws.py)
 
 #### Usage:  upload image 
 
@@ -252,7 +244,7 @@ usage:
     ```
 
 <a id="references"></a>
-## 5. References
+## 6. References
 [Return to Table of Contents](#contents)
 
 * Duckietown Project Documentation and Resources. The official Duckietown documentation offers comprehensive guides on setting up Duckiebots, programming them, and understanding the Duckietown environment: https://docs.duckietown.org/
