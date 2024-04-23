@@ -9,7 +9,7 @@
 **Team: The Killer Robots**:
 
 * Artemio Mendoza
-* Nathaniel Roe 
+* Nathaniel Roe (with support from GPT4-turbo programming assistant)
 * Sidharta Roy
 
 Welcome to our project to design and construct an autonomous Duckiebot capable of navigating through a simulated environment known as Duckietown. Our Duckiebot's mission is to identify and report the locations of "victims" marked by distinct visual cues, such as colored shapes or QR codes. This endeavor showcases core robotics principles, including autonomous navigation and object recognition, all within a simulated search and rescue scenario.
