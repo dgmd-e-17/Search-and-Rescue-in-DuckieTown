@@ -68,19 +68,32 @@ This initiative provides a comprehensive learning experience in autonomous syste
 <img style="float: left; padding-right: 300px; width: 450px" src="./images/edges.png"></img>
 
 
-3) Once a person is detected, the robot stops and takes a picture of the situation. That picture is stored in the controller workstation to be analyzed. Note: while the Duckiebot platform takes control of navigation, object detection is done on a different device.
+3) The images from the robot's vision are real-time downloaded and then uploaded to Google Drive API. The uploaded images are then analyzed using YOLOV5 to determine if there are humans in the picture.  That picture is stored in the controller workstation to be analyzed with regard to danger. Note: while the Duckiebot platform takes control of navigation, object detection is done on a different device.
 
-    - 3.1 People detected (Case I)
 
-        <img style="float: left; padding-right: 300px; width: 450px" src="./images/caseI.png"></img>
+3a.) Example of human recognition (photo of leg). The on-board camera images are streamed, saved, and analyzed off-board to determine if there are humans present in the current robot view.
+        
+Pre YOLO model analysis (uploaded image from Duckiebot Dashboard)
 
-    - 3.2 People detected (Case II)
+<img style="float: left; padding-right: 300px; width: 450px" src="./images/image_20240422_224308_348125.jpg"></img>
+    
+Post YOLO model analysis
 
-        <img style="float: left; padding-right: 300px; width: 450px" src="./images/caseII.png"></img>
+<img style="float: left; padding-right: 300px; width: 450px" src="./images/detected_image_20240422_224308_348125.jpg"></img>
+
+Further LLM analysis to understand environment
+
+- 3.1 People detected (Case I)
+
+  <img style="float: left; padding-right: 300px; width: 450px" src="./images/caseI.png"></img>
+
+- 3.2 People detected (Case II)
+
+  <img style="float: left; padding-right: 300px; width: 450px" src="./images/caseII.png"></img>
 .
 
 
-4) When the controller workstation detects an image, it is input to the local LLM API for classification. The output is either a "Safe situation" or a "Potential Rescue". In the second case, the model returns a description of the hazard, to help the rescue team. 
+5) When the controller workstation detects an image, it is input to the local LLM API for classification. The output is either a "Safe situation" or a "Potential Rescue". In the second case, the model returns a description of the hazard, to help the rescue team. 
 
     - 4.1 Case I: Situation classified as Safe by the LLM (the text below was generated automatically by the LLM model)
 
@@ -95,7 +108,7 @@ This initiative provides a comprehensive learning experience in autonomous syste
 .
 5) If the situation is a Potential Rescue, then the robot uploads the image to AWS for log and further analysis. Also, it signals a human operator take control of the robot and make a decision. 
 
-    <img style="float: left; padding-right: 300px; width: 450px" src="./Snag_11e8c1e0.png"></img>
+<img style="float: left; padding-right: 300px; width: 450px" src="./Snag_11e8c1e0.png"></img>
 .
 
 6) If there is no danger, then the robot keeps looking for victims. 
@@ -109,9 +122,10 @@ This initiative provides a comprehensive learning experience in autonomous syste
 #### Hardware
 
 * NVIDIA Jetson Nano 4GB with GPU (CUDA)
-* Video cam
+* Video cam (on board)
 * Differential Driver, 2-wheeled robot, with encoders.
 * Customized Duckietown setup, modified for search and rescue
+* Wifi Antenna and Receiver
 
 #### Software
 
@@ -121,10 +135,12 @@ This initiative provides a comprehensive learning experience in autonomous syste
 * ROS for coordinating sensor data and actuator commands
 * AWS Services  - Cloud integration for AI advanced Image processing
 * Docker - to access Duckietown image with basic commands
+* YOLOV5 for Image Recognition
 
 #### Methods
 
-* Implement algorithms for navigationg around obstacles 
+* Implement algorithms for navigationg around track
+* Convolutional Neural Network, YOLOV5
 * Deep Learning/Computer Vision techniques for victim identification
 * Data logging and visual indication for reporting
 * Image capture and transference to AWS cloud 
@@ -134,7 +150,7 @@ This initiative provides a comprehensive learning experience in autonomous syste
 ## Solution Architecture
 [Return to Table of Contents](#contents)
 
-* Our SAR system employs an autonomous Duckiebot with NVIDIA Jetson Nano, using MobileNet CNN for real-time victim detection. 
+* Our SAR system employs an autonomous Duckiebot with NVIDIA Jetson Nano, using YOLOV5 CNN for real-time victim detection. 
 
 * We use a State of The Art (SOTA) Large Language Model, LLaVA, to identify possible hazardous situations via image capture. The image is not only classified, but also, the potentially dangerous situation is described, so the rescue team could have context.
 
