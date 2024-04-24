@@ -60,34 +60,36 @@ This initiative provides a comprehensive learning experience in autonomous syste
 
 
 1) It starts with the robot being deployed in a disaster environment. Note: in our case, the environment is Duckitown, a controlled city with landmarks. So far, our environment is reduced to this track but we will have a bigger "city" in place.
-<img style="float: left; padding-right: 300px; width: 450px" src="./images/duckie_road.png"></img>
 
-</p>
+
+    <img style="float: left; padding-right: 300px; width: 450px" src="./images/duckie_road.png"></img>
+
 
 2) Once deployed, the robot is capable of walking following the edges of the terrain. This is how the robot "sees" the terrain.
-<img style="float: left; padding-right: 300px; width: 450px" src="./images/edges.png"></img>
+
+    <img style="float: left; padding-right: 300px; width: 450px" src="./images/edges.png"></img>
 
 
-3) The images from the robot's vision are real-time downloaded and then uploaded to Google Drive API. The uploaded images are then analyzed using YOLOV5 to determine if there are humans in the picture.  That picture is stored in the controller workstation to be analyzed with regard to danger. Note: while the Duckiebot platform takes control of navigation, object detection is done on a different device.
+3) The images from the robot's vision are real-time downloaded and then uploaded to Google Drive API. The uploaded images are then analyzed using YOLOV5 to determine if there are humans in the picture.  That picture is stored in the controller workstation to be analyzed concerning danger. Note: while the Duckiebot platform takes control of navigation, object detection is done on a different device.
 
 
-3a.) Example of human recognition (photo of leg). The on-board camera images are streamed, saved, and analyzed off-board to determine if there are humans present in the current robot view.
+- 3.1 Example of human recognition (photo of the leg). The on-board camera images are streamed, saved, and analyzed off-board to determine if there are humans present in the current robot view.
         
-Pre YOLO model analysis (uploaded image from Duckiebot Dashboard)
+    Pre YOLO model analysis (uploaded image from Duckiebot Dashboard) 
 
-<img style="float: left; padding-right: 300px; width: 450px" src="./images/image_20240422_224308_348125.jpg"></img>
+    <img style="float: left; padding-right: 300px; width: 450px" src="./images/image_20240422_224308_348125.jpg"></img>
     
-Post YOLO model analysis
+    Post YOLO model analysis
 
-<img style="float: left; padding-right: 300px; width: 450px" src="./images/detected_image_20240422_224308_348125.jpg"></img>
+    <img style="float: left; padding-right: 300px; width: 450px" src="./images/detected_image_20240422_224308_348125.jpg"></img>
 
-Further LLM analysis to understand environment
+    Further LLM analysis to understand the environment
 
-- 3.1 People detected (Case I)
+- 3.2 People detected (Case I)
 
   <img style="float: left; padding-right: 300px; width: 450px" src="./images/caseI.png"></img>
 
-- 3.2 People detected (Case II)
+- 3.3 People detected (Case II)
 
   <img style="float: left; padding-right: 300px; width: 450px" src="./images/caseII.png"></img>
 .
@@ -106,12 +108,12 @@ Further LLM analysis to understand environment
         <img style="float: left; padding-right: 300px; width: 450px" src="./images/caseII-rescue.png"></img>
 
 .
-5) If the situation is a Potential Rescue, then the robot uploads the image to AWS for log and further analysis. Also, it signals a human operator take control of the robot and make a decision. 
+6) If the situation is a Potential Rescue, then the robot uploads the image to AWS for log and further analysis. Also, it signals a human operator to take control of the robot and make a decision. 
 
 <img style="float: left; padding-right: 300px; width: 450px" src="./Snag_11e8c1e0.png"></img>
 .
 
-6) If there is no danger, then the robot keeps looking for victims. 
+7) If there is no danger, then the robot keeps looking for victims. 
 
 
 
@@ -122,7 +124,7 @@ Further LLM analysis to understand environment
 #### Hardware
 
 * NVIDIA Jetson Nano 4GB with GPU (CUDA)
-* Video cam (on board)
+* Video camera (onboard)
 * Differential Driver, 2-wheeled robot, with encoders.
 * Customized Duckietown setup, modified for search and rescue
 * Wifi Antenna and Receiver
@@ -139,7 +141,7 @@ Further LLM analysis to understand environment
 
 #### Methods
 
-* Implement algorithms for navigationg around track
+* Implement algorithms for navigating around the track
 * Convolutional Neural Network, YOLOV5
 * Deep Learning/Computer Vision techniques for victim identification
 * Data logging and visual indication for reporting
@@ -173,7 +175,7 @@ Further LLM analysis to understand environment
 <a id="proposal"></a>
 ### Proposal presentation
 
-[This video shows our project proposal](https://drive.google.com/file/d/1viS06114cGnm_ffIdsgWONALd-dSAewz/view?usp=sharing). This is the video shown during the initial proposals presentations.
+[This video shows our project proposal](https://drive.google.com/file/d/1viS06114cGnm_ffIdsgWONALd-dSAewz/view?usp=sharing). This is the video shown during the initial proposal presentations.
 
 Also, a detailed version with only [the slides of the proposal can be found here.](https://docs.google.com/presentation/d/1ApG4v_wA1hNNz_CjFQiBxmGrkqtl3VUr9AUES8yy6bY/edit?usp=sharing) 
 
@@ -208,7 +210,7 @@ In [this video, we discuss the ethical risks, and our proposals to mitigate them
 **Start LLaVa Services**<br/>
 Note: *Instructions and image taken from Github Repository above*
 
-The LLM model is deployed locally and can be used either via web interface, or as a CLI command. In either case, we need the following infrastructure. 
+The LLM model is deployed locally and can be used either via web interface or as a CLI command. In either case, we need the following infrastructure. 
 
 ![alt text](images/llava-arch.png)
 
