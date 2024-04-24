@@ -73,29 +73,29 @@ This initiative provides a comprehensive learning experience in autonomous syste
 3) The images from the robot's vision are real-time downloaded and then uploaded to Google Drive API. The uploaded images are then analyzed using YOLOV5 to determine if there are humans in the picture.  That picture is stored in the controller workstation to be analyzed concerning danger. Note: while the Duckiebot platform takes control of navigation, object detection is done on a different device.
 
 
-- 3.1 Example of human recognition (photo of the leg). The on-board camera images are streamed, saved, and analyzed off-board to determine if there are humans present in the current robot view.
+    - 3.1 Example of human recognition (photo of the leg). The on-board camera images are streamed, saved, and analyzed off-board to determine if there are humans present in the current robot view.
         
-    Pre YOLO model analysis (uploaded image from Duckiebot Dashboard) 
+        Pre YOLO model analysis (uploaded image from Duckiebot Dashboard) 
 
-    <img style="float: left; padding-right: 300px; width: 450px" src="./images/image_20240422_224308_348125.jpg"></img>
+        <img style="float: left; padding-right: 300px; width: 450px" src="./images/image_20240422_224308_348125.jpg"></img>
     
-    Post YOLO model analysis
+        Post YOLO model analysis
 
-    <img style="float: left; padding-right: 300px; width: 450px" src="./images/detected_image_20240422_224308_348125.jpg"></img>
+        <img style="float: left; padding-right: 300px; width: 450px" src="./images/detected_image_20240422_224308_348125.jpg"></img>
 
-    Further LLM analysis to understand the environment
+        Further LLM analysis to understand the environment
 
-- 3.2 People detected (Case I)
+    - 3.2 People detected (Case I)
 
-  <img style="float: left; padding-right: 300px; width: 450px" src="./images/caseI.png"></img>
+    <img style="float: left; padding-right: 300px; width: 450px" src="./images/caseI.png"></img>
 
-- 3.3 People detected (Case II)
+    - 3.3 People detected (Case II)
 
-  <img style="float: left; padding-right: 300px; width: 450px" src="./images/caseII.png"></img>
+    <img style="float: left; padding-right: 300px; width: 450px" src="./images/caseII.png"></img>
 .
 
 
-5) When the controller workstation detects an image, it is input to the local LLM API for classification. The output is either a "Safe situation" or a "Potential Rescue". In the second case, the model returns a description of the hazard, to help the rescue team. 
+4) When the controller workstation detects an image, it is input to the local LLM API for classification. The output is either a "Safe situation" or a "Potential Rescue". In the second case, the model returns a description of the hazard, to help the rescue team. 
 
     - 4.1 Case I: Situation classified as Safe by the LLM (the text below was generated automatically by the LLM model)
 
@@ -107,13 +107,12 @@ This initiative provides a comprehensive learning experience in autonomous syste
 
         <img style="float: left; padding-right: 300px; width: 450px" src="./images/caseII-rescue.png"></img>
 
-.
-6) If the situation is a Potential Rescue, then the robot uploads the image to AWS for log and further analysis. Also, it signals a human operator to take control of the robot and make a decision. 
 
-<img style="float: left; padding-right: 300px; width: 450px" src="./Snag_11e8c1e0.png"></img>
-.
+5) If the situation is a Potential Rescue, then the robot uploads the image to AWS for log and further analysis. Also, it signals a human operator to take control of the robot and make a decision. 
 
-7) If there is no danger, then the robot keeps looking for victims. 
+    <img style="float: left; padding-right: 300px; width: 450px" src="./Snag_11e8c1e0.png"></img>
+
+6) If there is no danger, then the robot keeps looking for victims. 
 
 
 
