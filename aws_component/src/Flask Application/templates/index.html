@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="static/styles.css">
+        
+        <div style="text-align: center">
+            <br>
+            <img height="100" width="500" src="https://scholar.harvard.edu/sites/scholar.harvard.edu/files/you/files/logo-harvard.png?m=1713302443" alt="Harvard Logo">
+        </div>
+        <title style="color: red"> Killer Robots - Search & Rescue </title>
+        <style>
+            table {
+                font-family: Arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th, td {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+        </style>
+    </head>
+    <body>
+        <br>
+        <div style="background-color: white">
+            <br>
+            <h1 class="title" style="color: black"> Killer Robots Search & Rescue - Command Center Activity</h1>
+            <h2 class="title" style="color: black"> Powered by AWS Rekognition AI Services</h2>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Image Name</th>
+            <th>Disaster Detected?</th>
+            <th>Labels</th>
+            <th>Neural Network Analysis</th>
+
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result.last_modified }}</td>
+            <td>{{ result.image_key }}</td>
+            <td>{{ "Yes" if result.disaster_detected else "No" }}</td>
+            <td>
+                <ul>
+                    {% for label in result.labels %}
+                    <li>{{ label.name }} ({{ label.confidence }})</li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td><a href="/analyze_image?image_key={{ result.image_key }}">View</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyzed Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #1877f2;
+        }
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .label-container {
+            margin-top: 20px;
+        }
+        .label-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .label-container li {
+            background-color: #e4e6eb;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Analyzed Image - Enhanced Deep Learning Neural Network (MASK R-CNN)</h1>
+        <div class="image-container">
+            <img src="{{ url_for('static', filename=analyzed_image_path) }}" alt="Analyzed Image">
+        </div>
+        <div class="label-container">
+            <h2>Detected Labels:</h2>
+            <ul>
+                {% for label in labels %}
+                <li>{{ label }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
