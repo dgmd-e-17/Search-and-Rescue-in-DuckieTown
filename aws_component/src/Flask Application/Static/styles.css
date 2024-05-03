@@ -1,0 +1,49 @@
+.logo {
+    width: 500px;
+    height: 75px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title {
+    color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.subtitle {
+    
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    height: 80px;
+    vertical-align:middle;
+}
+
+.label {
+    color: #003366;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.label-chat {
+    color: #003366;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+
+.form-entry {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+
+.input {
+    width: 350px;
+}
